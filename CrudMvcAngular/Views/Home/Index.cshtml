@@ -27,69 +27,123 @@
                     <td class="text-center">{{func.Departamento}}</td>
                     <td class="text-center">{{func.Cargo}}</td>
                     <td class="text-center" style="width: 200px">
-                        <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a>
-                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                        <a href="#" data-target="#AtualizarFuncionario" data-toggle="modal" class="btn btn-success" ng-click="atualizarFuncionarioPorId(func)">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <a href="#" data-target="#ExcluirFuncionario" data-toggle="modal" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
                     </td>
                 </tr>
             </tbody>
         </table>
-    </div>
 
-    @* Inicio modal - adicionar Funcionário *@
-    
-    <div class="modal" id="AdicionarFuncionario" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="col-sm-8">
-                        <h3 class="text-info">Adicionar Funcionário</h3>
+        @* Inicio modal - adicionar Funcionário *@
+        <div class="modal" id="AdicionarFuncionario" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="col-sm-8">
+                            <h3 class="text-info">Adicionar Funcionário</h3>
+                        </div>
+                        <div class="col-sm-4 text-right" style="margin-top: 20px; margin-bottom: 10px;">
+                            <button type="button" class="btn btn-success text-right" id="btnSalvar" data-dismiss="modal" ng-click="adicionarFuncionario()">
+                                <span class="glyphicon glyphicon-floppy-disk"></span>
+                            </button>
+                            <button type="button" class="btn btn-danger text-left" id="btnFechar" data-dismiss="modal" ng-click="limpaDados()">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-sm-4 text-right" style="margin-top: 20px; margin-bottom: 10px;">
-                        <button type="button" class="btn btn-success text-right" id="btnSalvar" data-dismiss="modal" ng-click="adicionarFuncionario()">
-                            <span class="glyphicon glyphicon-floppy-disk"></span>
-                        </button>
-                        <button type="button" class="btn btn-danger text-left" id="btnSalvar" data-dismiss="modal" ng-click="limpaDados()">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </button>
+                    <div class="modal-body">
+                        <form class="form-horizontal" name="AdicionarFuncionarioForm">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input class="form-control" readonly="readonly" name="funcionarioId" type="hidden" placeholder="Id" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" name="nome" ng-model="nome" placeholder="Nome" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" name="email" ng-model="email" placeholder="E-mail" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" name="departamento" ng-model="departamento" placeholder="Departamento" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" name="cargo" ng-model="cargo" placeholder="Cargo" />
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" name="AdicionarFuncionarioForm">
-                        <div class="form-group">
-                            <div class="col-sm-10">
-                                <input class="form-control" readonly="readonly" name="funcionarioId" type="hidden" placeholder="Id" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-10">
-                                <input class="form-control" type="text" name="nome" ng-model="nome" placeholder="Nome" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-10">
-                                <input class="form-control" type="text" name="email" ng-model="email" placeholder="E-mail" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-10">
-                                <input class="form-control" type="text" name="departamento" ng-model="departamento" placeholder="Departamento" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-10">
-                                <input class="form-control" type="text" name="cargo" ng-model="cargo" placeholder="Cargo" />
-                            </div>
-                        </div>
-                    </form>
-                </div>
 
-                <div class="modal-footer">
+                    <div class="modal-footer">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        @* Fim modal - adicionar Funcionário *@
 
-    @* Fim modal - adicionar Funcionário *@
+        @* Inicio modal - atualizar Funcionário *@
+        <div class="modal" id="AtualizarFuncionario" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="col-sm-8">
+                            <h3 class="text-info">Atualizar Funcionário</h3>
+                        </div>
+                        <div class="col-sm-4 text-right" style="margin-top: 20px; margin-bottom: 10px;">
+                            <button type="button" class="btn btn-success text-right" id="btnSalvar" data-dismiss="modal" ng-click="atualizarFuncionario()">
+                                <span class="glyphicon glyphicon-floppy-disk"></span>
+                            </button>
+                            <button type="button" class="btn btn-danger text-left" data-dismiss="modal">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body" style="margin-left: 20px;">
+                        <form class="form-horizontal" name="AtualizarForm">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input class="form-control" readonly="readonly" type="hidden" name="FuncionarioId" ng-model="AtualizadoFuncionarioId" placeholder="ID" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input class="form-control" name="Nome" ng-model="AtualizadoNome" placeholder="Nome" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input class="form-control" name="Email" ng-model="AtualizadoEmail" placeholder="E-mail" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input class="form-control" name="Departamento" ng-model="AtualizadoDepartamento" placeholder="Departamento" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input class="form-control" name="Cargo" ng-model="AtualizadoCargo" placeholder="Cargo" />
+                                </div>
+                            </div>
+                            <div class="modal-footer"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @* Fim modal - atualizar Funcionário *@
+    </div>
 </div>
 
 @section scripts {

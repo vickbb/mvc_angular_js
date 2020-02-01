@@ -49,6 +49,7 @@ funcionarioApp.controller('funcionarioCtrl', function ($scope, funcionarioServic
     $scope.atualizarFuncionarioPorId = function (funcionario) {
         $scope.AtualizadoFuncionarioId = funcionario.FuncionarioId;
         $scope.AtualizadoNome = funcionario.Nome;
+        $scope.AtualizadoEmail = funcionario.Email;
         $scope.AtualizadoDepartamento = funcionario.Departamento;
         $scope.AtualizadoCargo = funcionario.Cargo;
     }
@@ -58,6 +59,7 @@ funcionarioApp.controller('funcionarioCtrl', function ($scope, funcionarioServic
         var funcionario = {
             FuncionarioId: $scope.AtualizadoFuncionarioId,
             Nome: $scope.AtualizadoNome,
+            Email: $scope.AtualizadoEmail,
             Departamento: $scope.AtualizadoDepartamento,
             Cargo: $scope.AtualizadoCargo
         };
@@ -91,6 +93,7 @@ funcionarioApp.controller('funcionarioCtrl', function ($scope, funcionarioServic
     $scope.limparDadosAtualizados = function () {
         $scope.AtualizadoFuncionarioId = '';
         $scope.AtualizadoNome = '';
+        $scope.AtualizadoEmail = '';
         $scope.AtualizadoDepartamento = '';
         $scope.AtualizadoCargo = '';
     }
