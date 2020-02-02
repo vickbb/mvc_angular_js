@@ -31,4 +31,8 @@ funcionarioApp.service('funcionarioService', function ($http) {
         return request;
     }
 
+    // Método responsável por excluir o Funcionário: DELETE
+    this.excluirFuncionario = function (AtualizadoFuncionarioId) {
+        return $http.post('/Funcionario/ExcluirFuncionario/' + AtualizadoFuncionarioId);
+    }
 });

@@ -78,6 +78,21 @@ funcionarioApp.controller('funcionarioCtrl', function ($scope, funcionarioServic
         });
     }
 
+    //Método responsavel por excluir o funcionario pelo ID
+    $scope.excluirFuncionario = function (AtualizadoFuncionarioId) {
+        var excluirInformacoes = funcionarioService.excluirFuncionario($scope.AtualizadoFuncionarioId);
+        excluirInformacoes.then(function (d) {
+            if (d.success === true) {
+                carregarFuncionarios();
+                alert("Funcionario excluido com sucesso!");
+            } else {
+                alert("Funcionário não excluido!");
+            }
+        }, function () {
+            alert("Ocorreu um erro ao tentar excluir o funcionário!")
+        });
+    }
+
     // Limpar os campos após inserção na base de dados
     $scope.limparDados = function () {
 

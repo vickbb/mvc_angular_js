@@ -72,5 +72,25 @@ namespace CrudMvcAngular.Controllers
             }
         }
         #endregion
+
+        #region Método para excluir funcionario - DELETE
+        [HttpPost]
+        public JsonResult ExcluirFuncionario(int funcionarioId)
+        {
+            using(var db = new FuncionariosEntities())
+            {
+                var funcionario = db.Funcionarios.Find(funcionarioId);
+                if( funcionario == null)
+                {
+                    return Json(new { success = false });
+                }
+
+                db.Funcionarios.Remove(funcionario);
+                db.SaveChanges();
+
+                return Json(new { success = true });
+            }
+        }
+        #endregion
     }
 }
