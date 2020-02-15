@@ -78,11 +78,17 @@ funcionarioApp.controller('funcionarioCtrl', function ($scope, funcionarioServic
         });
     }
 
+    // Méto responsável por resgatar dados do funcionario para sua exclusão
+    $scope.excluirFuncionarioPorId = function (funcionario) {
+        $scope.AtualizadoFuncionarioId = funcionario.FuncionarioId;
+        $scope.AtualizadoNome = funcionario.Nome;
+    }
+
     //Método responsavel por excluir o funcionario pelo ID
     $scope.excluirFuncionario = function (AtualizadoFuncionarioId) {
         var excluirInformacoes = funcionarioService.excluirFuncionario($scope.AtualizadoFuncionarioId);
         excluirInformacoes.then(function (d) {
-            if (d.success === true) {
+            if (d.data.success === true) {
                 carregarFuncionarios();
                 alert("Funcionario excluido com sucesso!");
             } else {

@@ -30,7 +30,7 @@
                         <a href="#" data-target="#AtualizarFuncionario" data-toggle="modal" class="btn btn-success" ng-click="atualizarFuncionarioPorId(func)">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
-                        <a href="#" data-target="#ExcluirFuncionario" data-toggle="modal" class="btn btn-danger">
+                        <a href="#" data-target="#ExcluirFuncionario" data-toggle="modal" class="btn btn-danger" ng-click="excluirFuncionarioPorId(func)">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>
@@ -50,7 +50,7 @@
                             <button type="button" class="btn btn-success text-right" id="btnSalvar" data-dismiss="modal" ng-click="adicionarFuncionario()">
                                 <span class="glyphicon glyphicon-floppy-disk"></span>
                             </button>
-                            <button type="button" class="btn btn-danger text-left" id="btnFechar" data-dismiss="modal" ng-click="limpaDados()">
+                            <button type="button" class="btn btn-default text-left" id="btnFechar" data-dismiss="modal" ng-click="limpaDados()">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </button>
                         </div>
@@ -104,7 +104,7 @@
                             <button type="button" class="btn btn-success text-right" id="btnSalvar" data-dismiss="modal" ng-click="atualizarFuncionario()">
                                 <span class="glyphicon glyphicon-floppy-disk"></span>
                             </button>
-                            <button type="button" class="btn btn-danger text-left" data-dismiss="modal">
+                            <button type="button" class="btn btn-default text-left" data-dismiss="modal">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </button>
                         </div>
@@ -143,6 +143,36 @@
             </div>
         </div>
         @* Fim modal - atualizar Funcionário *@
+
+        @* Inicio modal - excluir Funcionário *@
+        <div class="modal" role="dialog" id="ExcluirFuncionario">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="col-sm-8">
+                            <h3 class="text-info">Tem certeza que deseja excluir este funcionário?</h3>
+                        </div>
+                        <div class="col-sm-4 text-right" style="margin-top: 20px; margin-bottom: 10px;">
+                            <button type="button" class="btn btn-danger text-right" id="btnSalvar" data-dismiss="modal" ng-click="excluirFuncionario(AtualizadoFuncionarioId)">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                            <button type="button" class="btn btn-default text-left" data-dismiss="modal">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <p>Id Funcionário: {{AtualizadoFuncionarioId}}</p>
+                            <p>Nome do Funcionario: {{AtualizadoNome}}</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        @* Fim modal - excluir Funcionário *@
     </div>
 </div>
 
